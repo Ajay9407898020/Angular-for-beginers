@@ -7,7 +7,7 @@ Typescript data type is typed like if we assign string value can then that varia
 
 1. Functions: 
 
-Different ways to write function
+Different ways to write function </br>
     Arrow
     function Declaration
     Function Expression
@@ -15,7 +15,7 @@ Different ways to write function
     Optional Parameter
     Required Parameter
 
-2. Classes
+2. Classes </br>
 
     Introduction to calsses
     Creating classes
@@ -25,7 +25,7 @@ Different ways to write function
     Memeber visibility
     Static Members
 
-3. Interface
+3. Interface </br>
     Create Interfaces
     Using Interfaces as Types
     Implementing Interface
@@ -34,7 +34,7 @@ Different ways to write function
     Array Destructuring
     rest operator
 
-4. Modules
+4. Modules </br>
     ES Modules 
     import/export 
     Compiling Typescripts to different JS version
@@ -42,7 +42,7 @@ Different ways to write function
 
 ***************************Angular Basics*********************************
 
-1. Setup & Installation
+1. Setup & Installation : </br>
     Installation Angular CLI 13.0.1
     Create new empty workspace using CLI
     Create a workspace with default app
@@ -58,7 +58,7 @@ $ ng g app hotelinventory
 # Also We can create workspace with default app this is we generally use in day to day life
 $ ng new hotelinventory
 
-#Walkthrought of workspace
+# Walkthrought of workspace
 1. src/ : all code based files presents here
     polyfills.ts:  Typescript file can be compiled down to any version of javascript but here does all browser support all version of javascript so ans is NO so to make it compatible require this file
 
@@ -67,27 +67,27 @@ $ ng new hotelinventory
 
 2. node_modules: installed packages
 
-3. package.json: Required package required to run an app
-    a. dependencies: any pacakages required for production up in running comes under this
-    b. devdependencies: any packages required for development purpose
+3. package.json: Required package required to run an app </br>
+    a. dependencies: any pacakages required for production up in running comes under this. </br>
+    b. devdependencies: any packages required for development purpose.
 
-4. tsconfig.app.json: having .ts conf as same as tsconfig.json file
+4. tsconfig.app.json: having .ts conf as same as tsconfig.json file.
 
-5. tsconfig.json: configuration of .ts (Typescript) files
+5. tsconfig.json: configuration of .ts (Typescript) files.
 
-6. angular.json: information about angular workspaces 
+6. angular.json: information about angular workspaces.
 
-7. karma.conf.json: configuration for testing which is default 
+7. karma.conf.json: configuration for testing which is default .
 
 
 
-2. Introduction to Mono-repo
-    Create and maintain multiple apps in same repo
-    Use Libraries within the project
-    Deploy Multiple apps/libs from same repo
-    Easy to share code within the project
-# We can share libraries with in apps also we can deploy multiple apps with same monorepo
-# It also helps of sharing code with one another easy
+2. Introduction to Mono-repo </br>
+    Create and maintain multiple apps in same repo.
+    Use Libraries within the project.
+    Deploy Multiple apps/libs from same repo.
+    Easy to share code within the project.
+We can share libraries with in apps also we can deploy multiple apps with same monorepo.
+It also helps of sharing code with one another easy
 
 
 3. Create component
@@ -99,21 +99,21 @@ $ ng g c <component name>
     Event Binding - ()
 
 5. Directives
-    Introduction: 
-        Directives are use to change behavior and appearance of DOM element.
-        Directives can implement all lifecycle hooks.
-        Directives can not have template.
-    Types of Directives
-        Structural Directives
-        Attribute Directives
-    Built-in Directives
-        *ngIf, *ngFor, *ngSwitch, ngClass, ngStyles
+    Introduction: </br>
+        Directives are use to change behavior and appearance of DOM element. </br>
+        Directives can implement all lifecycle hooks. </br>
+        Directives can not have template. </br>
+    Types of Directives </br>
+        Structural Directives </br>
+        Attribute Directives </br>
+    Built-in Directives </br>
+        *ngIf, *ngFor, *ngSwitch, ngClass, ngStyles </br>
 
-6. Pipes
-    Introduction
-        Pipes are used for data transformation
-        Pipes donn't change actual object
-    Built-in Pipes
-        Date, UpperCase, LowerCase, Currency, Decimal, Percent, Json, Slice, Async
+6. Pipes </br>
+    Introduction </br>
+        Pipes are used for data transformation </br>
+        Pipes donn't change actual object </br>
+    Built-in Pipes </br>
+        Date, UpperCase, LowerCase, Currency, Decimal, Percent, Json, Slice, Async </br>
 
-7. Add Bootstrap using Style.css and angular.json files
+7. Add Bootstrap using Style.css and angular.json files </br>
