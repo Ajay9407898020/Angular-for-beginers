@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Self } from '@angular/core';
+import { RoomsService } from '../rooms/services/rooms.service';
 
 @Component({
   selector: 'hinv-employee',
@@ -7,7 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EmployeeComponent implements OnInit {
 
-  constructor() { }
+  // It is use for self decorator
+  // constructor(@Self() private roomService: RoomsService) { }
+
+  constructor(private roomService: RoomsService) { }
+
 
   ngOnInit(): void {
   }

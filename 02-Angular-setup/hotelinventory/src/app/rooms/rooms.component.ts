@@ -1,6 +1,7 @@
-import { Component, OnInit, ViewChild, AfterViewInit, ViewChildren, QueryList } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit, ViewChildren, QueryList, SkipSelf } from '@angular/core';
 import { Room, RoomList } from './rooms';
 import { HeaderComponent } from '../header/header.component';
+import { RoomsService } from './services/rooms.service';
 
 @Component({
   selector: 'hinv-rooms',
@@ -24,39 +25,18 @@ export class RoomsComponent implements OnInit, AfterViewInit{
   // Multiple instance of header component is present in html then we can use viewchildrens decorator to modify
   @ViewChildren(HeaderComponent) headerChildrenComponent!: QueryList<HeaderComponent>;
 
-  constructor() { }
+
+  //Skip self used here
+  // constructor(@SkipSelf() private roomService: RoomsService) { }
+  
+  constructor(@SkipSelf() private roomService: RoomsService) { }
+
 
   ngOnInit(): void {
     console.log(this.headerComponent);
-    this.roomList = [
-      {
-        roomNumber: 1,
-        roomType: 'Delux Room',
-        amenities: 'Mortine, AC, TV',
-        price: 100,
-        photos: '/assets/images/living-room-1835923__480.jpg',
-        checkinTime: new Date('11-Nov-2021'),
-        checkoutTime: new Date('12-Nov-2021'),
-      },
-      {
-        roomNumber: 2,
-        roomType: 'Plain Room',
-        amenities: 'AC, TV, machine',
-        price: 200,
-        photos: '/assets/images/living-room-1835923__480.jpg',
-        checkinTime: new Date('11-Nov-2021'),
-        checkoutTime: new Date('12-Nov-2021'),
-      },
-      {
-        roomNumber: 3,
-        roomType: 'Stylish Room',
-        amenities: 'Windows, Bike, machine',
-        price: 300,
-        photos: '/assets/images/living-room-1835923__480.jpg',
-        checkinTime: new Date('15-Nov-2021'),
-        checkoutTime: new Date('19-Nov-2021'),
-      },
-    ]
+    this.roomService.getRooms().subscribe(data=> {
+      this.roomList = data;
+    });
   }
 
   ngAfterViewInit() {
@@ -78,7 +58,7 @@ export class RoomsComponent implements OnInit, AfterViewInit{
 
   addRoom() {
     const room: RoomList = {
-      roomNumber: 4,
+      roomNumber: '4',
       roomType: 'Fab Room',
       amenities: 'Car, RoomFreshner',
       price: 1000,
