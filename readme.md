@@ -5,49 +5,47 @@
 Typescript data type is typed like if we assign string value can then that variable considered to be string then can not assign with number or any other datatype other that string
 
 
-1. Functions: 
+1. Functions: Different ways to write function:
+    - Arrow
+    - function Declaration
+    - Function Expression
+    - Generic Function 
+    - Optional Parameter
+    - Required Parameter
 
-Different ways to write function </br>
-    Arrow
-    function Declaration
-    Function Expression
-    Generic Function 
-    Optional Parameter
-    Required Parameter
+2. Classes:
 
-2. Classes </br>
+    - Introduction to calsses
+    - Creating classes
+    - Class Properties and constructor
+    - Class Methods
+    - Creating Instances of class
+    - Memeber visibility
+    - Static Members
 
-    Introduction to calsses
-    Creating classes
-    Class Properties and constructor
-    Class Methods
-    Creating Instances of class
-    Memeber visibility
-    Static Members
+3. Interface: 
+    - Create Interfaces
+    - Using Interfaces as Types
+    - Implementing Interface
+    - Extending Interfaces
+    - object destructuring
+    - Array Destructuring
+    - rest operator
 
-3. Interface </br>
-    Create Interfaces
-    Using Interfaces as Types
-    Implementing Interface
-    Extending Interfaces
-    object destructuring
-    Array Destructuring
-    rest operator
-
-4. Modules </br>
-    ES Modules 
-    import/export 
-    Compiling Typescripts to different JS version
+4. Modules: 
+    - ES Modules 
+    - import/export 
+    - Compiling Typescripts to different JS version
 
 
 ***************************Angular Basics*********************************
 
-1. Setup & Installation : </br>
-    Installation Angular CLI 13.0.1
-    Create new empty workspace using CLI
-    Create a workspace with default app
-    Workspace walkthrough
-    Introduction to mono-repo
+1. Setup & Installation :
+    - Installation Angular CLI 13.0.1
+    - Create new empty workspace using CLI
+    - Create a workspace with default app
+    - Workspace walkthrough
+    - Introduction to mono-repo
 
 # Create Empty Workspace using cmd
 $ ng new hotelinventoryapp --createApplication=false
@@ -62,7 +60,7 @@ $ ng new hotelinventory
 1. src/ : all code based files presents here
     polyfills.ts:  Typescript file can be compiled down to any version of javascript but here does all browser support all version of javascript so ans is NO so to make it compatible require this file
 
-    main.ts: Entry points of app
+   - main.ts: Entry points of app
 
 
 2. node_modules: installed packages
@@ -81,64 +79,64 @@ $ ng new hotelinventory
 
 
 
-2. Introduction to Mono-repo </br>
-    Create and maintain multiple apps in same repo. </br>
-    Use Libraries within the project. </br>
-    Deploy Multiple apps/libs from same repo. </br>
-    Easy to share code within the project. </br>
-We can share libraries with in apps also we can deploy multiple apps with same monorepo. </br>
-It also helps of sharing code with one another easy
+2. Introduction to Mono-repo :
+    - Create and maintain multiple apps in same repo. 
+    - Use Libraries within the project. 
+    - Deploy Multiple apps/libs from same repo. 
+    - Easy to share code within the project. 
+- We can share libraries with in apps also we can deploy multiple apps with same monorepo. 
+- It also helps of sharing code with one another easy
 
 
 3. Create component </br>
 $ ng g c <component name>
 
-4. Binding Syntax </br>
-    Interpolation - {{}} </br>
-    Property binding - [] </br>
-    Event Binding - () </br>
+4. Binding Syntax:  
+    - Interpolation - {{}} 
+    - Property binding - [] 
+    - Event Binding - () 
 
-5. Directives
-    Introduction: </br>
-        Directives are use to change behavior and appearance of DOM element. </br>
-        Directives can implement all lifecycle hooks. </br>
-        Directives can not have template. </br>
-    Types of Directives </br>
-        Structural Directives </br>
-        Attribute Directives </br>
-    Built-in Directives </br>
-        *ngIf, *ngFor, *ngSwitch, ngClass, ngStyles </br>
+5. Directives:
+    - Introduction: 
+        - Directives are use to change behavior and appearance of DOM element. 
+        - Directives can implement all lifecycle hooks. 
+        - Directives can not have template. 
+    - Types of Directives 
+        - Structural Directives 
+        - Attribute Directives 
+    - Built-in Directives 
+        - *ngIf, *ngFor, *ngSwitch, ngClass, ngStyles 
 
-6. Pipes </br>
-    Introduction </br>
-        Pipes are used for data transformation </br>
-        Pipes donn't change actual object </br>
-    Built-in Pipes </br>
-        Date, UpperCase, LowerCase, Currency, Decimal, Percent, Json, Slice, Async </br>
+6. Pipes :
+    - Introduction 
+        - Pipes are used for data transformation 
+        - Pipes donn't change actual object 
+    - Built-in Pipes 
+        Date, UpperCase, LowerCase, Currency, Decimal, Percent, Json, Slice, Async 
 
-7. Add Bootstrap using Style.css and angular.json files </br>
+7. Add Bootstrap using Style.css and angular.json files 
 
 
 # Angular Intermediate
 
 8. Lifecycle Hooks
--> Component instance has lifecycle hooks which can help you to hook into different evets On component. </br>
--> Life cycle ends when component is destroyed
+   - Component instance has lifecycle hooks which can help you to hook into different evets On component.
+   - Life cycle ends when component is destroyed
 
-ngOnChanges, ngOnInit, ngDoCheck, ngAfterContentInit, ngAfterContentChecked, ngAfterViewInit, ngAfterViewChecked, ngOnDestroy
+   - ngOnChanges, ngOnInit, ngDoCheck, ngAfterContentInit, ngAfterContentChecked, ngAfterViewInit, ngAfterViewChecked, ngOnDestroy
 
 9. Ways of component communication</br>
-    Input/Output decorator
-    Viewchild decorator
-    Services
+    - Input/Output decorator
+    - Viewchild decorator
+    - Services
 
 10. ChangeDetection: </br>
     As data updates so related view also get update called as change detection </br>
     We also can apply changedetection strategy mannually in @Componenet decorator </br>
     We have two option to do that </br>
 
-    a. Default: 
-    b. OnPush: It should Only apply to those component having no change internally like itself component is not changing data either parents.
+    - Default: 
+    - OnPush: It should Only apply to those component having no change internally like itself component is not changing data either parents.
 
     @Component({</br>
         selector: 'hinv-rooms-list',</br>
