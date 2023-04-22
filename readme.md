@@ -82,21 +82,21 @@ $ ng new hotelinventory
 
 
 2. Introduction to Mono-repo </br>
-    Create and maintain multiple apps in same repo.
-    Use Libraries within the project.
-    Deploy Multiple apps/libs from same repo.
-    Easy to share code within the project.
-We can share libraries with in apps also we can deploy multiple apps with same monorepo.
+    Create and maintain multiple apps in same repo. </br>
+    Use Libraries within the project. </br>
+    Deploy Multiple apps/libs from same repo. </br>
+    Easy to share code within the project. </br>
+We can share libraries with in apps also we can deploy multiple apps with same monorepo. </br>
 It also helps of sharing code with one another easy
 
 
-3. Create component
+3. Create component </br>
 $ ng g c <component name>
 
-4. Binding Syntax
-    Interpolation - {{}}
-    Property binding - []
-    Event Binding - ()
+4. Binding Syntax </br>
+    Interpolation - {{}} </br>
+    Property binding - [] </br>
+    Event Binding - () </br>
 
 5. Directives
     Introduction: </br>
@@ -117,3 +117,53 @@ $ ng g c <component name>
         Date, UpperCase, LowerCase, Currency, Decimal, Percent, Json, Slice, Async </br>
 
 7. Add Bootstrap using Style.css and angular.json files </br>
+
+
+# Angular Intermediate
+
+8. Lifecycle Hooks
+-> Component instance has lifecycle hooks which can help you to hook into different evets On component. </br>
+-> Life cycle ends when component is destroyed
+
+ngOnChanges, ngOnInit, ngDoCheck, ngAfterContentInit, ngAfterContentChecked, ngAfterViewInit, ngAfterViewChecked, ngOnDestroy
+
+9. Ways of component communication</br>
+    Input/Output decorator
+    Viewchild decorator
+    Services
+
+10. ChangeDetection: </br>
+    As data updates so related view also get update called as change detection </br>
+    We also can apply changedetection strategy mannually in @Componenet decorator </br>
+    We have two option to do that </br>
+
+    a. Default: 
+    b. OnPush: It should Only apply to those component having no change internally like itself component is not changing data either parents.
+
+    @Component({</br>
+        selector: 'hinv-rooms-list',</br>
+        templateUrl: './rooms-list.component.html',</br>
+        styleUrls: ['./rooms-list.component.scss'],</br>
+        changeDetection: ChangeDetectionStrategy.OnPush,</br>
+    })</br>
+
+    ONPUSH : Here We should follow the concept called immutability if onpush strategy applied on child component
+
+    - Remember if any modified array (using push) we pass to child component the view will not be update 
+    - We require the new instance of array only
+
+11. ngAfterViewInit: always execute after view rendered and we should use when we use @viewChild decorator</br>
+
+- Here is some catch that you will always have one error in console due to double check in dev mode and you can ignore it</br>
+
+- MOST IMP: Suppose we instantiate component (headercomponent) using viewchild decorator in parent component (roomscomponent) and use static property true then It is consider that header component having no Asyncronous programming so we are free to use that instance in ngOninit of parent component</br>
+
+If instantiate(header component) having Asyncronous program then we should not use static property becuse bydefult it is false and use that instance in ngAfterViewInit() parent component</br>
+
+- if we use template ref (ngTemplate with #variale ) use read property of viewchild decorator :pls check app.component.html</br>
+
+- Dynamically loading component using viewContainerRef.createComponent check exp in app component</br>
+
+- If any component rendered more than one time using <hinv-header></hinv-header> then we should using viewChildren decorator </br>
+
+12. Template Refrence
