@@ -15,16 +15,25 @@
     {{ selectedRoom | json }}
 </div>
 
+<h3>
+    {{ getError$ | async }}
+    Number of rooms : {{ roomCount$ | async }}
+</h3>
+
 <div>
     <button class="btn btn-secondary" (click)="addRoom()">Add Room</button>
 </div>
 
-<div *ngIf="rooms.avalableRooms > 0">
+<div *ngIf="roomList$ | async as rooms">
     Room List
     <pre>
         <!-- {{ roomList | json }} -->
     </pre>
-   <hinv-rooms-list [rooms]="roomList" (selectedRoom)="selectRoom($event)"></hinv-rooms-list>
+   <hinv-rooms-list [rooms]="rooms" (selectedRoom)="selectRoom($event)"></hinv-rooms-list>
 </div>
 
 <button (click)="toogle()">Toogle</button>
+<button (click)="editRoom()">Edit</button>
+<button (click)="deleteRoom()">Delete</button>
+
+<h1>{{ totalBytes }} Loaded </h1>
