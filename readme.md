@@ -56,7 +56,7 @@ Typescript data type is typed like if we assign string value can then that varia
 - Also We can create workspace with default app this is we generally use in day to day life
     - $ ng new hotelinventory
 
-# Walkthrought of workspace
+- Walkthrought of workspace
 1. src/ : all code based files presents here
     - polyfills.ts:  Typescript file can be compiled down to any version of javascript but here does all browser support all version of javascript so ans is NO so to make it compatible require this file
 
@@ -198,7 +198,7 @@ Typescript data type is typed like if we assign string value can then that varia
                 <img src="./dependency-service-flow-dig.png" ></img>
             - any  
         - VALUE PROVIDERS: VERY IMPORTANT CONCEPTS 
-            - If any resource that we don't want to use directly due to the risk of modification or something else we should use value provider concept
+            - If any resource that we don't want to use directly due to the risk of modification or something else we should use value provider concept and genrally we use @Inject() decorator
             - Go to appconfig.service.ts file to verify and how it is use
             - Also we can do the same for using localstorage API
         - Factory     
@@ -216,7 +216,55 @@ Typescript data type is typed like if we assign string value can then that varia
     - Rxjs, Observable and streams
         - RXJS is an library for writing Reactive Programming
         - Observable are stream of data to which we can subscribe
+            - Observable : It bradcast the stream of data 
+            - Observer : It checks wether the data has changed if yes then calls the next() method internally and in subscribtion we can get the new data
     - http methods
-    - Rxjs Operator
-    - Http Interceptors
+        - GET, PUT, POST, DELETE
+    - HTTPRequest API: When you want full control on requesting api like if you want to do something on these folowing event happens then you can do insted of using http.get() method becouse it does not gives this controls  
+        - Request send: notfication card having req send msg
+        - Data loading: show some loaded data first
+        - Download progress:  show loading symbol
+        - Response: show response body once get
+        - check the roomcomponent.ts ngoninit 
+    - async Pipe: If the data is only we want to get and we subscribe has to unsubscribe as well so the best way to do it is to use async pipe which make subscribe and unsubscribe as well
+        - Remember async pipe can return null so handle accordingly 
+        - Try to avoid multiple async pipe in one html rather you can use alias and use that alias
+            - roomsList$ | async as rooms 
+    - Rxjs Operator:
+        - shareReply: It help to cash the request so you don't have to request again if request made more than one time
+        - catchError: It helps to handle error if api response Error response
+        - subject: It act as observable and observer as well
+        -Map: modify the stream of data using this 
+    - Http Interceptors: 
+        - Allow us to intercept every request
+        - We can change data and add headers
+        - {
+            provide: HTTP_INTERCEPTORS,
+            useClass: RequestInterceptor,
+            multi: true
+            }
+        - HTTP_INTERCEPTORS it is a service use for intercepting request 
+        - Angular itself add many interceptor in request and also we can add interceptor in it 
+        - Interceptor only works sequencially in case you have multiple interceptors
+        - we can intercept request only for POST method or PUT method or GET method check this RequestInterceptor
     - APP_INITIALIZERS
+        - APP_INITIALIZER allow you to inject function as applications startup or initialize
+
+15. Angular Router
+    - Introduction
+        - Provides the functionality to add Routes
+        - Developers can configure all the routes at Front-End
+        - Provides SPA functionality
+        - Feature to add nested routes
+    - Setup Router
+        - Import RouterModule
+        - forRoot method allows us to add multiple route config
+        - Default route : empty url should redirect  ex - { path: '', redirectTo :'/rooms', pathMatch: 'full'  },
+        - Dynamic route
+        - Wild card route: the url given not present in routes should be redirect to error page
+    - Using ActivatedRoute Service
+    - Using Router Service
+    - Feature Module and Routing
+    - Nested Routing and Child Routes
+    - Lazy Loading
+    - Route Guards
