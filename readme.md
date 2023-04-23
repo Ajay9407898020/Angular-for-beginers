@@ -47,27 +47,27 @@ Typescript data type is typed like if we assign string value can then that varia
     - Workspace walkthrough
     - Introduction to mono-repo
 
-# Create Empty Workspace using cmd
-$ ng new hotelinventoryapp --createApplication=false
+- Create Empty Workspace using cmd
+    - $ ng new hotelinventoryapp --createApplication=false
 
-# Then Add app in it
-$ ng g app hotelinventory
+- Then Add app in it
+    - $ ng g app hotelinventory
 
-# Also We can create workspace with default app this is we generally use in day to day life
-$ ng new hotelinventory
+- Also We can create workspace with default app this is we generally use in day to day life
+    - $ ng new hotelinventory
 
 # Walkthrought of workspace
 1. src/ : all code based files presents here
-    polyfills.ts:  Typescript file can be compiled down to any version of javascript but here does all browser support all version of javascript so ans is NO so to make it compatible require this file
+    - polyfills.ts:  Typescript file can be compiled down to any version of javascript but here does all browser support all version of javascript so ans is NO so to make it compatible require this file
 
    - main.ts: Entry points of app
 
 
 2. node_modules: installed packages
 
-3. package.json: Required package required to run an app </br>
-    a. dependencies: any pacakages required for production up in running comes under this. </br>
-    b. devdependencies: any packages required for development purpose.
+3. package.json: Required package required to run an app
+    - dependencies: any pacakages required for production up in running comes under this.
+    - devdependencies: any packages required for development purpose.
 
 4. tsconfig.app.json: having .ts conf as same as tsconfig.json file.
 
@@ -88,8 +88,8 @@ $ ng new hotelinventory
 - It also helps of sharing code with one another easy
 
 
-3. Create component </br>
-$ ng g c <component name>
+3. Create component: 
+    - $ ng g c <component name>
 
 4. Binding Syntax:  
     - Interpolation - {{}} 
@@ -117,7 +117,7 @@ $ ng g c <component name>
 7. Add Bootstrap using Style.css and angular.json files 
 
 
-# Angular Intermediate
+***************************Angular Intermediate Level 1*********************************
 
 8. Lifecycle Hooks
    - Component instance has lifecycle hooks which can help you to hook into different evets On component.
@@ -145,23 +145,78 @@ $ ng g c <component name>
         changeDetection: ChangeDetectionStrategy.OnPush,</br>
     })</br>
 
-    ONPUSH : Here We should follow the concept called immutability if onpush strategy applied on child component
+    - ONPUSH : Here We should follow the concept called immutability if onpush strategy applied on child component
 
     - Remember if any modified array (using push) we pass to child component the view will not be update 
     - We require the new instance of array only
 
-11. ngAfterViewInit: always execute after view rendered and we should use when we use @viewChild decorator</br>
+11. ngAfterViewInit: always execute after view rendered and we should use when we use @viewChild decorator
 
-- Here is some catch that you will always have one error in console due to double check in dev mode and you can ignore it</br>
+- Here is some catch that you will always have one error in console due to double check in dev mode and you can ignore it
 
 - MOST IMP: Suppose we instantiate component (headercomponent) using viewchild decorator in parent component (roomscomponent) and use static property true then It is consider that header component having no Asyncronous programming so we are free to use that instance in ngOninit of parent component</br>
 
-If instantiate(header component) having Asyncronous program then we should not use static property becuse bydefult it is false and use that instance in ngAfterViewInit() parent component</br>
+- If instantiate(header component) having Asyncronous program then we should not use static property becuse bydefult it is false and use that instance in ngAfterViewInit() parent component</br>
 
-- if we use template ref (ngTemplate with #variale ) use read property of viewchild decorator :pls check app.component.html</br>
+- If we use template ref (ngTemplate with #variale ) use read property of viewchild decorator :pls check app.component.html</br>
 
 - Dynamically loading component using viewContainerRef.createComponent check exp in app component</br>
 
 - If any component rendered more than one time using <hinv-header></hinv-header> then we should using viewChildren decorator </br>
 
 12. Template Refrence
+
+
+*****************Angular InterMediate Level 2***************************************
+
+13. Dependency Injection
+    - Introduction
+        - Dependencies are service or objects needed by classes to perform some function
+        - It's a design pattern
+        - Angular has built-in Dependency injection support
+    - Component Interaction Using Service
+        - Sharing data between multiple components
+        - Sharing data within App
+
+    - Resolution Modifiers
+        - self Decorator: As we add self decorator with service in a component ex employee component then angular will search that service in current employee folder location if it is not found will raise Null injector error insted of going app moudle or something else 
+        
+        - skip slef decorator: If the service injected using skipself decorator then angular want the service to be placed above the current postion of component other wise raise an error you can check rooms.component.ts file 
+
+        - Optional decorator: If the service is injected using optional decorator then It indicates that if service is present then only execute otherwise skip that 
+            - Use case schenario: when if we want that service available in dev but not in production in such time we use this (Logger.service.ts)
+    - DI Providers
+        - Class based providers
+            - ng g s <service-name>
+            - Injecting a service
+            - Consuming a service
+            - root: 
+                - In old days we have to register service in providers array of app module and issue here was if we not using that service by any chance still that service gets bundeled.
+                - Solution were to use provided in root inside @Injectable decorator which means the same but if we are not using that service does not let add servie in bundled.
+                - root also means that It will create only single instance of a service no matter how many time of service class instantiate you can check to write console in service class constructor.(rooms.service.js)
+                - Flow Dig
+                <img src="./dependency-service-flow-dig.png" ></img>
+            - any  
+        - VALUE PROVIDERS: VERY IMPORTANT CONCEPTS 
+            - If any resource that we don't want to use directly due to the risk of modification or something else we should use value provider concept
+            - Go to appconfig.service.ts file to verify and how it is use
+            - Also we can do the same for using localstorage API
+        - Factory     
+
+14. Angular HTTP Request Module
+    - Introduction:
+        - In enterprise apps, You need to interact with API's
+        - You may be familiar with ajax,fetch
+        - HttpClient Service Provided by Angular to interact with API's
+        - HttpClient internally uses RXJS
+    - Setting Up HttpClient
+        - We need to import HttpClientModule
+        - Once module is imported we can inject HttpClient Service
+    - Using HttpClient Service
+    - Rxjs, Observable and streams
+        - RXJS is an library for writing Reactive Programming
+        - Observable are stream of data to which we can subscribe
+    - http methods
+    - Rxjs Operator
+    - Http Interceptors
+    - APP_INITIALIZERS
