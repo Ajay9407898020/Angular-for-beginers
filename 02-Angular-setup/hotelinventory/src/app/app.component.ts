@@ -2,6 +2,9 @@ import { AfterViewInit, Component, ElementRef, OnInit, ViewChild, ViewContainerR
 import { RoomsComponent } from './rooms/rooms.component';
 import { LoggerService } from './logger.service';
 import { InitService } from './init.service';
+import { ConfigService } from './services/config.service';
+import { NavigationEnd, NavigationStart, Router } from '@angular/router';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'hinv-root',
@@ -15,13 +18,27 @@ export class AppComponent implements OnInit,AfterViewInit{
 
 
   constructor(@Optional() private loggerService: LoggerService,
-  private initService: InitService) {
+  private initService: InitService,
+  private configService: ConfigService,
+  private router: Router) {
     this.loggerService?.log('appComponent.ngOninit() ');
     console.log('config init', initService.config);
   }
 
   ngOnInit(): void {
-    this.name.nativeElement.innerHTML = `<h3>Hilton Hotels</h3>`;
+    // this.name.nativeElement.innerHTML = `<h3>Hilton Hotels</h3>`;
+    console.log('NgOnint')
+    this.router.events.pipe(
+      filter((event)=> event instanceof NavigationStart)
+    ).subscribe(()=> {
+      console.log('Navigation started')
+    })
+
+    this.router.events.pipe(
+      filter((event)=> event instanceof NavigationEnd)
+    ).subscribe(()=> {
+      console.log('Navigation End')
+    })
   }
 
   ngAfterViewInit(): void {
