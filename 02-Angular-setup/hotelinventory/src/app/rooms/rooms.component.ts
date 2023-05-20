@@ -5,6 +5,7 @@ import { RoomsService } from './services/rooms.service';
 import { Observable, Subject, of } from 'rxjs'
 import { catchError, map } from 'rxjs/operators'
 import { HttpEventType } from '@angular/common/http';
+import { ConfigService } from '../services/config.service';
 
 @Component({
   selector: 'hinv-rooms',
@@ -56,7 +57,8 @@ export class RoomsComponent implements OnInit, AfterViewInit{
 
   totalBytes = 0;
   
-  constructor(@SkipSelf() private roomService: RoomsService) { }
+  constructor(@SkipSelf() private roomService: RoomsService,
+  private configService: ConfigService) { }
 
 
   ngOnInit(): void {

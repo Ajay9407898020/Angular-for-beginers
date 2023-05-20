@@ -4,36 +4,43 @@
 <hinv-header></hinv-header>
 
 <div [hidden]="hideRooms">
-    No of rooms:
-    <div [innerText]="noOfRooms" [ngStyle]="{'color': rooms.avalableRooms ? 'steelblue' : 'red'}" >
-
-    </div>
+  No of rooms:
+  <div
+    [innerText]="noOfRooms"
+    [ngStyle]="{ color: rooms.avalableRooms ? 'steelblue' : 'red' }"
+  ></div>
 </div>
-{{ rooms?.avalableRooms ?? 'No Rooms' }}
+{{ rooms?.avalableRooms ?? "No Rooms" }}
 
 <div *ngIf="selectedRoom">
-    {{ selectedRoom | json }}
+  {{ selectedRoom | json }}
 </div>
 
 <h3>
-    {{ getError$ | async }}
-    Number of rooms : {{ roomCount$ | async }}
+  {{ getError$ | async }}
+  Number of rooms : {{ roomCount$ | async }}
 </h3>
 
 <div>
-    <button class="btn btn-secondary" (click)="addRoom()">Add Room</button>
+  <!-- <button class="btn btn-secondary" (click)="addRoom()">Add Room</button> -->
+  <button class="btn btn-secondary" routerLink="/rooms/add">Add Room</button>
 </div>
 
 <div *ngIf="roomList$ | async as rooms">
-    Room List
-    <pre>
+  Room List
+  <pre>
         <!-- {{ roomList | json }} -->
     </pre>
-   <hinv-rooms-list [rooms]="rooms" (selectedRoom)="selectRoom($event)"></hinv-rooms-list>
+  <hinv-rooms-list
+    [rooms]="rooms"
+    (selectedRoom)="selectRoom($event)"
+  ></hinv-rooms-list>
 </div>
 
 <button (click)="toogle()">Toogle</button>
 <button (click)="editRoom()">Edit</button>
 <button (click)="deleteRoom()">Delete</button>
 
-<h1>{{ totalBytes }} Loaded </h1>
+<h1>{{ totalBytes }} Loaded</h1>
+
+<router-outlet></router-outlet>
