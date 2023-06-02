@@ -5,11 +5,12 @@ import { RoomList } from '../rooms';
   selector: 'hinv-rooms-list',
   templateUrl: './rooms-list.component.html',
   styleUrls: ['./rooms-list.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  // changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RoomsListComponent implements OnInit, OnChanges {
-  @Input() rooms: RoomList[] | null = [];
-  @Output() selectedRoom = new EventEmitter<RoomList>() ;
+  @Input() rooms: RoomList[] = [];
+  @Output() selectedRoom = new EventEmitter<RoomList>();
+  @Input() price = 0
 
   constructor() { }
 

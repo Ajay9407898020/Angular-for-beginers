@@ -1,4 +1,4 @@
-{{ roomForm.valid | json }}
+<!-- {{ roomForm.valid | json }} -->
 
 <div *ngIf="successMsg !== ''" class="alert alert-success">
   {{ successMsg }}
@@ -13,6 +13,7 @@
       class="form-control"
       placeholder="Room Type"
       [(ngModel)]="room.roomType"
+      [ngModelOptions]="{ updateOn: 'blur' }"
     />
   </div>
   <div class="form-group">

@@ -3,15 +3,15 @@ import { AbstractControl, NG_VALIDATORS, ValidationErrors, Validator } from '@an
 
 @Directive({
   selector: '[hinvEmailvalidator]',
-  providers: [{provide: NG_VALIDATORS, useExisting: EmailvalidatorDirective, multi: true}]
+  providers: [{ provide: NG_VALIDATORS, useExisting: EmailvalidatorDirective, multi: true }]
 })
 export class EmailvalidatorDirective implements Validator {
 
   constructor() { }
 
   validate(control: AbstractControl): ValidationErrors | null {
-    const value = control.value as string;
-    if(value.includes('test')){
+    const value = control?.value as string;
+    if (value?.includes('test')) {
       return { invalidEmail: true };
     }
     return null;

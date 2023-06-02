@@ -2,6 +2,15 @@
 
 <hinv-header></hinv-header>
 <hinv-header></hinv-header>
+{{ priceFilter.value | json }}
+<div>
+  <input
+    type="number"
+    class="form-control"
+    placeholder="Number of Rooms"
+    [formControl]="priceFilter"
+  />
+</div>
 
 <div [hidden]="hideRooms">
   No of rooms:
@@ -12,9 +21,9 @@
 </div>
 {{ rooms?.avalableRooms ?? "No Rooms" }}
 
-<div *ngIf="selectedRoom">
+<!-- <div *ngIf="selectedRoom">
   {{ selectedRoom | json }}
-</div>
+</div> -->
 
 <h3>
   {{ getError$ | async }}
@@ -34,6 +43,7 @@
   <hinv-rooms-list
     [rooms]="rooms"
     (selectedRoom)="selectRoom($event)"
+    [price]="priceFilter.value"
   ></hinv-rooms-list>
 </div>
 
