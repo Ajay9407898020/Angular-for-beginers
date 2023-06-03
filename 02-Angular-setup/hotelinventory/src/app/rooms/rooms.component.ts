@@ -6,13 +6,14 @@ import { Observable, Subject, of } from 'rxjs'
 import { catchError, map } from 'rxjs/operators'
 import { HttpEventType } from '@angular/common/http';
 import { ConfigService } from '../services/config.service';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'hinv-rooms',
   templateUrl: './rooms.component.html',
   styleUrls: ['./rooms.component.scss'],
 })
-export class RoomsComponent implements OnInit, AfterViewInit{
+export class RoomsComponent implements OnInit, AfterViewInit {
   hotelName: string = 'Taj Hotel';
   noOfRooms: number = 10;
   hideRooms = false;
@@ -24,16 +25,18 @@ export class RoomsComponent implements OnInit, AfterViewInit{
   selectedRoom!: RoomList;
   roomList!: RoomList[];
 
-  roomList$ = this.roomService.getRooms$.pipe(catchError(err=> {
+  roomList$ = this.roomService.getRooms$.pipe(catchError(err => {
     this.error$.next(err.message);
     return of([])
   }));
+
+  priceFilter = new FormControl(0);
   error$: Subject<string> = new Subject();
 
   getError$ = this.error$.asObservable();
 
-  roomCount$ =  this.roomService.getRooms$.pipe(
-    map(rooms=> {
+  roomCount$ = this.roomService.getRooms$.pipe(
+    map(rooms => {
       return rooms.length
     })
   )
@@ -48,7 +51,7 @@ export class RoomsComponent implements OnInit, AfterViewInit{
   // constructor(@SkipSelf() private roomService: RoomsService) { }
 
   // Creating our own stream of data using observable
-  stream = new Observable(observer=> {
+  stream = new Observable(observer => {
     observer.next('first');
     observer.next('second');
     observer.complete();
@@ -56,9 +59,9 @@ export class RoomsComponent implements OnInit, AfterViewInit{
   })
 
   totalBytes = 0;
-  
+
   constructor(@SkipSelf() private roomService: RoomsService,
-  private configService: ConfigService) { }
+    private configService: ConfigService) { }
 
 
   ngOnInit(): void {
@@ -67,14 +70,14 @@ export class RoomsComponent implements OnInit, AfterViewInit{
     // });
 
     // subscribing to stream data
-    this.stream.subscribe(streamData=> {
+    this.stream.subscribe(streamData => {
       console.log(streamData);
     })
 
     // get photos of HTTPRequest
-    this.roomService.getPhotos().subscribe(event=> {
+    this.roomService.getPhotos().subscribe(event => {
       console.log(event);
-      switch(event.type) {
+      switch (event.type) {
         case HttpEventType.Sent: {
           console.log('Request has been sent');
           break;
@@ -128,7 +131,7 @@ export class RoomsComponent implements OnInit, AfterViewInit{
     // Change detection will detect the new instance of array
     // this.roomList = [...this.roomList, room];
 
-    this.roomService.addRooms(room).subscribe(data=> {
+    this.roomService.addRooms(room).subscribe(data => {
       this.roomList = data;
     })
   }
@@ -143,13 +146,13 @@ export class RoomsComponent implements OnInit, AfterViewInit{
       checkinTime: new Date('19-Nov-2021'),
       checkoutTime: new Date('29-Nov-2021'),
     }
-    this.roomService.updateRoom(room).subscribe(data=> {
+    this.roomService.updateRoom(room).subscribe(data => {
       this.roomList = data;
     })
   }
 
   deleteRoom() {
-    this.roomService.deleteRoom('2').subscribe(data=> {
+    this.roomService.deleteRoom('2').subscribe(data => {
       this.roomList = data;
     })
   }

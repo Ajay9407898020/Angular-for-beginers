@@ -16,12 +16,19 @@ const routes: Routes = [
     canLoad: [LoginGuard]
   },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
+  // {
+  //   path: 'booking',
+  //   loadChildren: () =>
+  //     import('./booking/booking.module').then((m) => m.BookingModule),
+  //   // canActivate: [LoginGuard],
+  // },
   {
-    path: 'booking',
+    path: 'booking/:roomid',
     loadChildren: () =>
       import('./booking/booking.module').then((m) => m.BookingModule),
-    canActivate: [LoginGuard],
+    // canActivate: [LoginGuard],
   },
+  { path: 'comments', loadChildren: () => import('./comments/comments.module').then(m => m.CommentsModule) },
   { path: '**', component: NotFoundComponent },
 ];
 

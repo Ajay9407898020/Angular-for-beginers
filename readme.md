@@ -354,11 +354,74 @@ Typescript data type is typed like if we assign string value can then that varia
         -   $ ng g c search // this will be registered in search module directly
 
 20. Route Guards
+
     -   canActivate
         -   Generally use to restrict user from routing to that component
     -   canActivateChild
         -   Generally use to restrict user from routing to that child component
     -   canDeactivate
+        -   Restrict user from moving that page
     -   canLoad
         -   It only used in lazy loading even if you are restriceted to that module but if you click and try to visit that module the code gets loads in DOM so to restrict from lazy loaded module in DOM we should use this canload interface impleted for roomsmodule in app.
-    -   Resolve
+    -   Resolve: It is generally use gurad for restricting page if data did not fetched and if happened we can navigate to other page accordingly.
+        -   Bottom Line is this guard prefetched data before moving to that page and redered
+        -   If we don't use this guard what will happen is like first reder the empty page and then fetch data through api and the render on screen so empty screen will be there for some mili sec
+
+21. Reactive Forms
+
+    -   Setting up Reactive Forms
+        -   Import ReactiveFormsModule to module
+        -   In Reactive Forms we create Forms using Typescript
+        -   Good for developers who like to have more controls in TS file
+        -   Uses Forms API like FormGroup, FormControl and Form Directive like FormControl
+    -   Creating Forms
+        -   Use FormControl class to create Form controls,
+        -   Use FormGroup to group multiple controls,
+        -   Use FormBuilder to build complex Forms.
+    -   Adding controls dynmically
+        -   Using addControl to add control
+        -   Using removeControl to remove control
+    -   Built-in validations
+        -   Use validators class to access built in validation
+        -   min
+        -   max
+        -   required
+        -   requiredTrue
+        -   email
+        -   minLength
+        -   maxLength
+        -   pattern
+    -   Validators error msg for one control
+    -   Validators error msg for nested form control
+        -   Here we have to use . to go nested so pls check booking form of address control
+    -   Validators error msg for form array control
+        -   Here we have to use [] to go inside array so pls check booking form of add guest control
+    -   Submit and reset Forms
+        -   Use ngSubmit to submit the form.
+        -   Use reset method to reset the form.
+    -   Listening to form value changes using valueChanges
+        -   valueChanges event allows to listen to all valuechanges of the form controle
+            -   If the form is big and we are subscribing all changes which may reduce the performance so in every form control we can add updateOn property and set it to blur
+        -   Useful to capture changes happening in real time
+    -   patchValue vs setValue
+        -   While binding data we can use setValue or patchvalue
+        -   while using setvalue we have to all properties of form
+        -   patchValue allows to skip the values for the formcontrl
+    -   using RXJS Map operator
+        -   using mergeMap operator
+            -   Sequence does not matter here as new data emmited it will take that data to next observable
+        -   using SwitchMap Oprtaor
+            -   It cancel the previous observable subscription as the new data emmited
+        -   using exhaustMap operator
+            -   It completes the previous observable subscription and does not worry about new emmited data
+    -   implementing Custom Validation
+
+    -   IMP Things: IF any control is disabled attached with value so we can't get value in form object usng value property insted we should use getRawValue
+
+22. Global Error Handler : It handles error at global level for that You need to create error handler service and implements class with ErrorHandler interface and register it in appmodule
+
+23. Testing:
+    -   Introduction
+    -   Writing your first test case
+    -   Testing Components
+    -   Testing Service

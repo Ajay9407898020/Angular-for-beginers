@@ -1,4 +1,4 @@
-import { APP_INITIALIZER, NgModule } from '@angular/core';
+import { APP_INITIALIZER, ErrorHandler, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http'
 
@@ -23,6 +23,8 @@ import { HoverDirective } from './hover.directive';
 import { EmailvalidatorDirective } from './emailvalidator/emailvalidator.directive';
 import { RoomsModule } from './rooms/rooms.module';
 import { HeaderModule } from './header/header.module';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { GlobalErrorHandler } from './services/errorhandler.service';
 
 // App initializer factory method
 function initFactory(initService: InitService) {
@@ -51,7 +53,8 @@ function initFactory(initService: InitService) {
     MatIconModule,
     MatListModule,
     FormsModule,
-    HeaderModule
+    HeaderModule,
+    MatSnackBarModule
   ],
   providers: [
     {
@@ -68,7 +71,8 @@ function initFactory(initService: InitService) {
       useFactory: initFactory,
       deps: [InitService],
       multi: true
-    }
+    },
+    { provide: ErrorHandler, useClass: GlobalErrorHandler }
   ],
   bootstrap: [AppComponent]
 })
